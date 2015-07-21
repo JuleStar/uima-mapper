@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="mapping" type="Mapping"/>
+  <xs:complexType name="Mapping">
+    <xs:sequence>
+      <xs:element name="map" type="Map" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Map">
+    <xs:attribute name="key" type="xs:string" />
+    <xs:attribute name="value" type="xs:string" />
+  </xs:complexType>
+</xs:schema>
