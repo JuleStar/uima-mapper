@@ -3,7 +3,6 @@ package uima.sandbox.mapper.engines;
 import java.io.FileInputStream;
 
 import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIterator;
@@ -11,6 +10,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.text.AnnotationFS;
 import org.apache.uima.cas.text.AnnotationIndex;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.descriptor.ExternalResource;
 import org.apache.uima.jcas.JCas;
@@ -19,10 +19,8 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Level;
 
 import uima.sandbox.mapper.resources.Mapping;
-import fr.univnantes.lina.UIMAProfiler;
 
 public class Mapper extends JCasAnnotator_ImplBase {
-
 	
 	// parameters
 	public static final String PARAM_SOURCE = "Source";
@@ -81,7 +79,6 @@ public class Mapper extends JCasAnnotator_ImplBase {
 	
 	@Override
 	public void process(JCas cas) throws AnalysisEngineProcessException {
-		UIMAProfiler.getProfiler("AnalysisEngine").start(this, "process");
 		this.setSource(cas);
 		this.setTarget(cas);
 		AnnotationIndex<Annotation> index = cas.getAnnotationIndex(this.sourceType);
@@ -105,7 +102,6 @@ public class Mapper extends JCasAnnotator_ImplBase {
         		}
             }
         }
-        UIMAProfiler.getProfiler("AnalysisEngine").stop(this, "process");
 	}
 
 	
